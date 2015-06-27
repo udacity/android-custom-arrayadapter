@@ -1,23 +1,33 @@
 package demo.example.com.customarrayadapter;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * A fragment containing the list view of Android versions.
  */
 public class MainActivityFragment extends Fragment {
 
-    private ArrayAdapter<String> mFlavorAdapter;
+    private AndroidFlavorAdapter flavorAdapter;
+
+    AndroidFlavor[] androidFlavors = {
+            new AndroidFlavor("Cupcake", "1.5", R.drawable.cupcake),
+            new AndroidFlavor("Donut", "1.6", R.drawable.donut),
+            new AndroidFlavor("Eclair", "2.0-2.1", R.drawable.eclair),
+            new AndroidFlavor("Froyo", "2.2-2.2.3", R.drawable.froyo),
+            new AndroidFlavor("GingerBread", "2.3-2.3.7", R.drawable.gingerbread),
+            new AndroidFlavor("Honeycomb", "3.0-3.2.6", R.drawable.honeycomb),
+            new AndroidFlavor("Ice Cream Sandwich", "4.0-4.0.4", R.drawable.icecream),
+            new AndroidFlavor("Jelly Bean", "4.1-4.3.1", R.drawable.jellybean),
+            new AndroidFlavor("KitKat", "4.4-4.4.4", R.drawable.kitkat),
+            new AndroidFlavor("Lollipop", "5.0-5.1.1", R.drawable.lollipop)
+    };
 
     public MainActivityFragment() {
     }
@@ -27,33 +37,11 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        // Create some data for our list view. These are the Android versions.
-        String[] data = {
-                "Cupcake (Android Version -1.5)",
-                "Donut (Android Version - 1.6)",
-                "Eclair (Android Version - 2.0–2.1)",
-                "Froyo (Android Version - 2.2–2.2.3)",
-                "Gingerbread (Android Version - 2.3–2.3.7)",
-                "Honeycomb (Android Version - 3.0–3.2.6)",
-                "Ice Cream Sandwich (Android Version - 4.0–4.0.4)",
-                "Jelly Bean (Android Version - 4.1–4.3.1)",
-                "KitKat (Android Version - 4.4–4.4.4, 4.4W–4.4W.2)",
-                "Lollipop (Android Version - 5.0–5.1.1)"
-        };
-        List<String> flavors = new ArrayList<String>(Arrays.asList(data));
-
-
-        // Now that we have some  data, create an ArrayAdapter.
-        mFlavorAdapter =
-                new ArrayAdapter<String>(
-                        getActivity(), // The current context (this activity)
-                        R.layout.list_item_flavor, // The name of the layout ID.
-                        R.id.list_item_flavor_textview, // The ID of the textview to populate.
-                        flavors);
+        flavorAdapter = new AndroidFlavorAdapter(getActivity(), Arrays.asList(androidFlavors));
 
         // Get a reference to the ListView, and attach this adapter to it.
         ListView listView = (ListView) rootView.findViewById(R.id.listview_flavor);
-        listView.setAdapter(mFlavorAdapter);
+        listView.setAdapter(flavorAdapter);
 
         return rootView;
     }
