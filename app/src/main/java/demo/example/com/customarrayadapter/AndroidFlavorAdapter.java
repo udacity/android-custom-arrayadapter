@@ -42,16 +42,23 @@ public class AndroidFlavorAdapter extends ArrayAdapter<AndroidFlavor> {
     public View getView(int position, View convertView, ViewGroup parent) {
         // Gets the AndroidFlavor object from the ArrayAdapter at the appropriate position
         AndroidFlavor androidFlavor = getItem(position);
-        View rootView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_flavor, parent, false);
 
-        ImageView iconView = (ImageView) rootView.findViewById(R.id.list_item_icon);
+        // Adapters recycle views to AdapterViews.
+        // If this is a new View object we're getting, then inflate the layout.
+        // If not, this view already has the layout inflated from a previous call to getView,
+        // and we modify the View widgets as usual.
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_flavor, parent, false);
+        }
+
+        ImageView iconView = (ImageView) convertView.findViewById(R.id.list_item_icon);
         iconView.setImageResource(androidFlavor.image);
 
-        TextView versionNameView = (TextView) rootView.findViewById(R.id.list_item_version_name);
+        TextView versionNameView = (TextView) convertView.findViewById(R.id.list_item_version_name);
         versionNameView.setText(androidFlavor.versionName);
 
-        TextView versionNumberView = (TextView) rootView.findViewById(R.id.list_item_versionnumber_textview);
+        TextView versionNumberView = (TextView) convertView.findViewById(R.id.list_item_versionnumber_textview);
         versionNumberView.setText(androidFlavor.versionNumber);
-        return rootView;
+        return convertView;
     }
 }
