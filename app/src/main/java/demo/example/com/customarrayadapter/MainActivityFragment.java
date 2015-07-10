@@ -68,7 +68,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 AndroidFlavor flavorClick = flavorAdapter.getItem(i);
-                flavorClick.versionName = "Hi! I am" + flavorClick.versionName;
+                flavorClick.versionName + = ":)";
                 flavorAdapter.notifyDataSetChanged();
             }
         });
