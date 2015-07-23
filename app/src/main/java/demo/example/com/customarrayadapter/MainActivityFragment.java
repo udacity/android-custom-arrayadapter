@@ -40,8 +40,8 @@ public class MainActivityFragment extends Fragment {
         flavorAdapter = new AndroidFlavorAdapter(getActivity(), Arrays.asList(androidFlavors));
 
         // Get a reference to the ListView, and attach this adapter to it.
-        ListView listView = (ListView) rootView.findViewById(R.id.listview_flavor);
-        listView.setAdapter(flavorAdapter);
+        GridView gridView = (GridView) rootView.findViewById(R.id.flavors_grid);
+        gridView.setAdapter(flavorAdapter);
 
         return rootView;
     }
