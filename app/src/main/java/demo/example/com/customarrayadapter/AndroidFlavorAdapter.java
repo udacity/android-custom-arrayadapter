@@ -55,7 +55,7 @@ public class AndroidFlavorAdapter extends ArrayAdapter<AndroidFlavor> {
         ImageView iconView = (ImageView) convertView.findViewById(R.id.flavor_image);
         iconView.setImageResource(androidFlavor.image);
 
-        TextView versionNameView = (TextView) convertView.findViewById(R.id.flavor_name);
+        TextView versionNameView = (TextView) convertView.findViewById(R.id.flavor_text);
         versionNameView.setText(androidFlavor.versionName 
             + " - " + androidFlavor.versionNumber );
 
