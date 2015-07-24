@@ -1,5 +1,5 @@
-# Custom ArrayAdapter Example in Android
+# GridView in Android
 
-This app demonstrates how to create and use a custom ArrayAdapter to display a custom list item view that is more complex than the single TextView supported by the standard ArrayAdapter.
+This app demonstrates how to create and use a GridView for the PopularMovies App.
 
 A webcast was recorded that goes through this example code for the Android Developer Nanodegree.
