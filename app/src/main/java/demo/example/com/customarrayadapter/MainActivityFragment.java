@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.GridView;
 
 import java.util.Arrays;
 
@@ -40,8 +41,8 @@ public class MainActivityFragment extends Fragment {
         flavorAdapter = new AndroidFlavorAdapter(getActivity(), Arrays.asList(androidFlavors));
 
         // Get a reference to the ListView, and attach this adapter to it.
-        ListView listView = (ListView) rootView.findViewById(R.id.listview_flavor);
-        listView.setAdapter(flavorAdapter);
+        GridView gridView = (GridView) rootView.findViewById(R.id.flavors_grid);
+        gridView.setAdapter(flavorAdapter);
 
         return rootView;
     }

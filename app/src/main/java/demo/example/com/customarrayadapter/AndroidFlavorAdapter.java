@@ -48,17 +48,17 @@ public class AndroidFlavorAdapter extends ArrayAdapter<AndroidFlavor> {
         // If not, this view already has the layout inflated from a previous call to getView,
         // and we modify the View widgets as usual.
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_flavor, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(
+                    R.layout.flavor_item, parent, false);
         }
 
-        ImageView iconView = (ImageView) convertView.findViewById(R.id.list_item_icon);
+        ImageView iconView = (ImageView) convertView.findViewById(R.id.flavor_image);
         iconView.setImageResource(androidFlavor.image);
 
-        TextView versionNameView = (TextView) convertView.findViewById(R.id.list_item_version_name);
-        versionNameView.setText(androidFlavor.versionName);
+        TextView versionNameView = (TextView) convertView.findViewById(R.id.flavor_text);
+        versionNameView.setText(androidFlavor.versionName 
+            + " - " + androidFlavor.versionNumber );
 
-        TextView versionNumberView = (TextView) convertView.findViewById(R.id.list_item_versionnumber_textview);
-        versionNumberView.setText(androidFlavor.versionNumber);
         return convertView;
     }
 }
